@@ -45,7 +45,7 @@ $totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
         <ul class="navbar">
           <li><a href="index.php" class="active">Accueil</a></li>
           <li><a href="articles.php">Articles</a></li>
-          <li><a href="article.php">Article</a></li>
+          <li><a href="article.php">Ajouter</a></li>
           <li><a href="inscription.php">Inscription</a></li>
           <li><a href="../index.php">Déconnexion</a></li>
         </ul>
@@ -62,16 +62,11 @@ $totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
       <!-- Home section-->
       <section class="home" id="home">
         <div class="home-text">
-          <h1>We Have everything <br> Your <span>Car</span> Need</h1>
-          <p>Lorem ipsum dolor sit amet consectetur <br> adipisicing elit. Corporis,
-            dolorum quaerat iste aperiam quia
-          </p>
-          <!-- home button -->
-          <a href="#" class="btn">Discover Now</a>
+          <h1>Page de gestion <br> Des <span>Produits du </span> Site</h1>
         </div>
       </section>
 
-      <div><a href="article.php">Ajouter un article</a></div>
+      <!-- <div><a href="article.php">Ajouter un article</a></div> -->
 
       <?php foreach ($messages as $message) { ?>
         <div class="alert alert-success" role="alert">
@@ -83,13 +78,13 @@ $totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
           <?= $error; ?>
         </div>
       <?php } ?>
-
-      <table class="table">
+      
+      <table class="table-style">
         <head>
           <tr>
-            <th>#</th>
+            <th>Id</th>
             <th>Titre</th>
-            <th>Actions</th>
+            <th>Modification ou Suppréssion</th>
           </tr>
         </head>
         <tbody>
@@ -107,24 +102,20 @@ $totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
         <?php } ?>
         </tbody>
       </table>
-
-      <nav aria-label="Page navigation example">
-      <ul class="pagination">
-
-        <?php if ($totalPages > 1) { ?>
-          <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
-            <li class="page-item">
-              <a class="page-link <?php if ($i == $page) {
-                                    echo " active";
-                                  } ?>" href="?page=<?php echo $i; ?>">
-                <?php echo $i; ?>
-              </a>
-            </li>
-          <?php } ?>
-        <?php } ?>
-      </ul>
-    </nav>
-
+      
+        <div  class="pagination">
+          <nav >
+            <ul>
+              <?php if ($totalPages > 1) { ?> 
+                <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+                  <li>
+                    <a class="page-link <?php if ($i == $page){echo " active";}?> " href="?page= <?php echo $i; ?> "> <?php echo $i; ?> </a>
+                  </li>
+                <?php } ?>
+              <?php } ?>
+            </ul>
+            </nav>
+        </div>
     </main>
 
     <footer>

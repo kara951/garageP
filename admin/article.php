@@ -155,7 +155,7 @@ if (isset($_POST['saveArticle'])) {
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="articles.php">Articles</a></li>
-                <li><a href="article.php">Article</a></li>
+                <li><a href="article.php">Ajouter</a></li>
                 <li><a href="inscription.php">Inscription</a></li>
                 <li><a href="../index.php">Déconnexion</a></li>
             </ul>
@@ -173,8 +173,6 @@ if (isset($_POST['saveArticle'])) {
         <section class="home" id="home">
             <div class="home-text">
                 <h1>Formulaire D'ajouter<br>Du <span>Contenu au </span>Site</h1>
-                <!-- home button -->
-                <a href="#" class="btn">Discover Now</a>
             </div>
         </section>
 
@@ -190,7 +188,7 @@ if (isset($_POST['saveArticle'])) {
                 <div class="input-group">
                     <label for="content">Contenu</label>
                     <div class="icon-input-container">
-                        <textarea name="content" id="content" cols="67" rows="6" placeholder="Contenu"><?= $article['content']; ?></textarea>
+                        <textarea name="content" id="content" cols="67" rows="5" placeholder="Contenu"><?= $article['content']; ?></textarea>
                     </div>
                 </div>
 

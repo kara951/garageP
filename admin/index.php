@@ -42,7 +42,7 @@ adminOnly();
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="articles.php">Articles</a></li>
-                <li><a href="article.php">Article</a></li>
+                <li><a href="article.php">Ajouter</a></li>
                 <li><a href="inscription.php">Inscription</a></li>
                 <li><a href="../index.php">Déconnexion</a></li>
             </ul>

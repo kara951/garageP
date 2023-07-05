@@ -84,7 +84,7 @@
             <ul class="navbar">
             <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="articles.php">Articles</a></li>
-                <li><a href="article.php">Article</a></li>
+                <li><a href="article.php">Ajouter</a></li>
                 <li><a href="inscription.php">Inscription</a></li>
                 <li><a href="../index.php">Déconnexion</a></li>
             </ul>
@@ -101,12 +101,7 @@
         <!-- Home section-->
         <section class="home" id="home">
             <div class="home-text">
-                <h1>We Have everything <br> Your <span>Car</span> Need</h1>
-                <p>Lorem ipsum dolor sit amet consectetur <br> adipisicing elit. Corporis,
-                    dolorum quaerat iste aperiam quia
-                </p>
-                <!-- home button -->
-                <a href="#" class="btn">Discover Now</a>
+                <h1>Page inscription <br> De <span>Nouvel</span> Employé</h1>
             </div>
         </section>
 

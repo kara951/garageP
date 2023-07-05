@@ -17,3 +17,9 @@
     <span><?= $car["prix"] ?></span>
     <a href="actualite.php?id=<?=$car["id"] ?>">Lire la suite<i class='bx bx-right-arrow-alt'></i></a>
 </div>
+
+<div class="box">
+<img src="<?=$imagePath ?>" alt="images-default">
+    <!-- /Applications/XAMPP/xamppfiles/htdocs/Garage/assets/images/car5.jpg -->
+    <a href="actualite.php?id=<?=$car["id"] ?>">Lire la suite<i class='bx bx-right-arrow-alt'></i></a>
+</div>

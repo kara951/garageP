@@ -8,6 +8,10 @@ require_once __DIR__ ."/lib/session.php";
 // info base de données
 $cars = getCars($pdo, 3);
 
+// À REPRNDRE ICI DEMAIN INCHALLAH
+
+// $cars = getService($pdo, 3);
+
 ?>
 
 <!DOCTYPE html>
@@ -89,60 +93,10 @@ $cars = getCars($pdo, 3);
             <!-- Parts Container -->
             <div class="parts-container container">
                 <!-- box1 -->
-                <div class="box">
-                    <img src="./uploads/parts/part1.png" alt="part1">
-                    <h3>Moteur</h3>
-                    <span>1200€</span>
-                    <i class='bx bxs-star'>(6 Review)</i>
-                    <a href="#" class="btn">Buy Now</a>
-                    <a href="#" class="details">View Details</a>
-                </div>
-                <!-- box2 -->
-                <div class="box">
-                    <img src="./uploads/parts/part2.png" alt="part2">
-                    <h3>Frein moteur</h3>
-                    <span>170€</span>
-                    <i class='bx bxs-star'>(6 Review)</i>
-                    <a href="#" class="btn">Buy Now</a>
-                    <a href="#" class="details">View Details</a>
-                </div>
-                <!-- box3 -->
-                <div class="box">
-                    <img src="./uploads/parts/part3.png" alt="part3">
-                    <h3>Suspention</h3>
-                    <span>208.55€</span>
-                    <i class='bx bxs-star'>(6 Review)</i>
-                    <a href="#" class="btn">Buy Now</a>
-                    <a href="#" class="details">View Details</a>
-                </div>
-                <!-- box4 -->
-                <div class="box">
-                    <img src="./uploads/parts/part4.png" alt="part4">
-                    <h3>Filtre à gaziol</h3>
-                    <span>82.99€</span>
-                    <i class='bx bxs-star'>(6 Review)</i>
-                    <a href="#" class="btn">Buy Now</a>
-                    <a href="#" class="details">View Details</a>
-                </div>
-                <!-- box5 -->
-                <div class="box">
-                    <img src="./uploads/parts/part5.png" alt="part5">
-                    <h3>Kit embrayage</h3>
-                    <span>670€</span>
-                    <i class='bx bxs-star'>(6 Review)</i>
-                    <a href="#" class="btn">Buy Now</a>
-                    <a href="#" class="details">View Details</a>
-                </div>
-                <!-- box6 -->
-                <div class="box">
-                    <img src="./uploads/parts/part6.png" alt="part6">
-                    <h3>Pneu</h3>
-                    <span>223€</span>
-                    <i class='bx bxs-star'>(6 Review)</i>
-                    <a href="#" class="btn">Buy Now</a>
-                    <a href="#" class="details">View Details</a>
-                </div>
-            </div>
+                <?php foreach ($services as $key => $service) { ?>
+                    <?php require __DIR__ . "/templates/article_part.php" ?>
+                <?php } ?>
+            </div>    
         </section>
 
 
