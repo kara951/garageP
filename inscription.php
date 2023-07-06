@@ -24,14 +24,12 @@ if (isset($_POST['addUser'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/inscription.css">
     <title>Page d'inscription</title>
 </head>
-
 <body>
     <!-- navbar -->
     <header>
@@ -66,11 +64,6 @@ if (isset($_POST['addUser'])) {
         <section class="home" id="home">
             <div class="home-text">
                 <h1>We Have everything <br> Your <span>Car</span> Need</h1>
-                <p>Lorem ipsum dolor sit amet consectetur <br> adipisicing elit. Corporis,
-                    dolorum quaerat iste aperiam quia
-                </p>
-                <!-- home button -->
-                <a href="#" class="btn">Discover Now</a>
             </div>
         </section>
 
@@ -79,6 +72,7 @@ if (isset($_POST['addUser'])) {
                 <?= $message; ?>
             </div>
         <?php } ?>
+        
         <?php foreach ($errors as $error) { ?>
             <div class="alert alert-danger" role="alert">
                 <?= $error; ?>

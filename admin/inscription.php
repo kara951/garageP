@@ -1,64 +1,30 @@
 <?php
+require_once __DIR__ . "/../lib/config.php"; 
+require_once __DIR__ . "/../lib/session.php";
+// PROTECTION COMPTE ADMIN
+adminOnly();
 
-// require_once 'lib/config.php'1;
-// // require_once 'lib/tools.php' 1;
-// // require_once 'lib/pdo.php'  1;
-// // require_once 'lib/user.php';
-
-// // require_once 'templates/header.php';1
-
-
-// require_once __DIR__ . "/../lib/config.php"; //1
-// require_once __DIR__ . "/../lib/session.php";
-
-// // PROTECTION COMPTE ADMIN
-// adminOnly();
-
-// require_once __DIR__ . "/../lib/pdo.php"; //1
-// require_once __DIR__ . "/../lib/tools.php"; //1
-// require_once __DIR__ . "/../lib/article.php";
-// require_once __DIR__ . "/../lib/category.php";
-
-// //require_once __DIR__ . "/templates/header.php";
+require_once __DIR__ . "/../lib/pdo.php";
+require_once __DIR__ . "/../lib/tools.php";
+require_once __DIR__ . "/../lib/article.php";
+require_once __DIR__ . "/../lib/category.php";
+require_once __DIR__ . "lib/user.php";
 
 
-
-// $errors = [];
-// $messages = [];
-// if (isset($_POST['addEmploye'])) {
-//     /*
-//         @todo ajouter la vérification sur les champs
-//     */
-//     $res = addEmploye($pdo, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
-//     if ($res) {
-//         $messages[] = 'Merci pour votre inscription';
-//     } else {
-//         $errors[] = 'Une erreur s\'est produite lors de votre inscription';
-//     }
-// }
-
-// 
+$errors = [];
+$messages = [];
+if (isset($_POST['addEmploye'])) { /*
+         @todo ajouter la vérification sur les champs
+     */
+    $res = addEmploye($pdo, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
+     if ($res) {
+         $messages[] = 'Merci pour votre inscription';
+     } else {
+         $errors[] = 'Une erreur s\'est produite lors de votre inscription';
+     }
+ }
+ 
 ?>
-
-<!-- <h1>Page d'inscription d'employé</h1>
-<a class="btn btn-primary d-inline-flex align-items-left" href="addEmploye.php">
-
-    <?php foreach ($messages as $message) { ?>
-        <div class="alert alert-success" role="alert">
-            <?= $message; ?>
-        </div>
-    <?php } ?>
-    <?php foreach ($errors as $error) { ?>
-        <div class="alert alert-danger" role="alert">
-            <?= $error; ?>
-        </div>
-    <?php } ?> -->
-
-
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -110,6 +76,7 @@
                 <?= $message; ?>
             </div>
         <?php } ?>
+        
         <?php foreach ($errors as $error) { ?>
             <div class="alert alert-danger" role="alert">
                 <?= $error; ?>
@@ -211,55 +178,3 @@
     </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inscription d'employeé</title>
-    </head>
-    <body>
-    <form method="POST">
-        <div class="mb-3">
-            <label for="first_name" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="first_name" name="first_name">
-        </div>
-        <div class="mb-3">
-            <label for="last_name" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="last_name" name="last_name">
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email">
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Mot de psse</label>
-            <input type="password" class="form-control" id="password" name="password">
-        </div>
-
-        <input type="submit" name="addEmploye" class="btn btn-primary" value="Enregistrer">
-
-    </form>
-    </body>
-    </html> -->
