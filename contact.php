@@ -1,4 +1,4 @@
-<?php require_once __DIR__."/lib/article.php"?>
+<?php require_once __DIR__ . "/lib/car.php" ?>
 
 
 <!DOCTYPE html>
@@ -22,11 +22,12 @@
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <li><a href="actualites.php">Actualités</a></li>
+                <!-- <li><a href="actualites.php">Actualités</a></li> -->
+                <li><a href="actualites.php">Nos vehicules</a></li>
                 <li><a href="a_propos.php">A Propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
+                <li><a href="login.php">se connecter</a></li>
+                <!-- <li><a href="inscription.php">Inscription</a></li> -->
             </ul>
             <!-- search icon -->
             <i class='bx bx-search' id="search-icon"></i>
@@ -42,11 +43,6 @@
         <section class="home" id="home">
             <div class="home-text">
                 <h1>We Have everything <br> Your <span>Car</span> Need</h1>
-                <p>Lorem ipsum dolor sit amet consectetur <br> adipisicing elit. Corporis,
-                    dolorum quaerat iste aperiam quia
-                </p>
-                <!-- home button -->
-                <a href="#" class="btn">Discover Now</a>
             </div>
         </section>
 
@@ -55,14 +51,21 @@
                 <div class="input-group">
                     <label for="email">Entrez votre email</label>
                     <div class="icon-input-container">
-                        <input type="text"autocomplete="off"id="email" name="email" placeholder="Votre email">
+                        <input type="text" autocomplete="off" id="email" name="email" placeholder="Votre email">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">Entrez votre numéro téléphone </label>
+                    <div class="icon-input-container">
+                        <input type="tel" autocomplete="off" id="phone" name="phone" placeholder="Votre telephone">
                     </div>
                 </div>
 
                 <div class="input-group">
                     <label for="textarea">Nous contacté</label>
                     <div class="icon-input-container">
-                        <textarea autocomplete="off"id="textarea" name="textarea" cols="67" rows="7" placeholder="Votre message"></textarea>
+                        <textarea autocomplete="off" id="textarea" name="textarea" cols="67" rows="25" placeholder="Votre message"></textarea>
                         <!-- <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea> -->
                     </div>
                 </div>
@@ -70,7 +73,7 @@
                 <button type="submit">Envoyer</button>
             </form>
         </div>
-    </main>   
+    </main>
 
     <footer>
         <section class="footer">
@@ -111,8 +114,9 @@
     <div class="copyright">
         <p>&#169; CarpoolVenom All Right Reserved</p>
     </div>
-    
-     <script src="../JS/index.js"></script>
+
+    <script src="../JS/index.js"></script>
 
 </body>
+
 </html>

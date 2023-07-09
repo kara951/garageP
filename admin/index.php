@@ -21,7 +21,6 @@ adminOnly();
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +28,6 @@ adminOnly();
     <link rel="stylesheet" href="./assetsAdmin/css/style.css">
     <title>Admin Garage</title>
 </head>
-
 <body>
     <header>
         <div class="nav container">
@@ -41,9 +39,9 @@ adminOnly();
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <li><a href="articles.php">Articles</a></li>
-                <li><a href="article.php">Ajouter</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
+                <li><a href="gestions.php">gestions</a></li>
+                <!-- <li><a href="produit.php">Ajouté_produits</a></li> -->
+                <li><a href="add_employe.php">Employé</a></li>
                 <li><a href="../index.php">Déconnexion</a></li>
             </ul>
 
@@ -61,8 +59,6 @@ adminOnly();
          <section class="home" id="home">
             <div class="home-text">
                 <h1>BIENVENUE  À LA <br>PAGE <span>ADMINISTRATION </span> DU GARAGE</h1>
-                <!-- home button -->
-                <!-- <a href="#" class="btn">Discover Now</a> -->
             </div>
         </section>
     </main>

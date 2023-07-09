@@ -32,14 +32,12 @@ if (isset($_POST['loginUser'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/login.css">
     <title>A propos</title>
 </head>
-
 <body>
     <!-- navbar -->
     <header>
@@ -54,11 +52,12 @@ if (isset($_POST['loginUser'])) {
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <li><a href="actualites.php">Actualités</a></li>
+                <!-- <li><a href="actualites.php">Actualités</a></li> -->
+                <li><a href="actualites.php">Nos vehicules</a></li>
                 <li><a href="a_propos.php">A Propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
+                <li><a href="login.php">se connecter</a></li>
+                <!-- <li><a href="inscription.php">Inscription</a></li> -->
             </ul>
             <!-- search icon -->
             <i class='bx bx-search' id="search-icon"></i>
@@ -74,11 +73,6 @@ if (isset($_POST['loginUser'])) {
         <section class="home" id="home">
             <div class="home-text">
                 <h1>We Have everything <br> Your <span>Car</span> Need</h1>
-                <p>Lorem ipsum dolor sit amet consectetur <br> adipisicing elit. Corporis,
-                    dolorum quaerat iste aperiam quia
-                </p>
-                <!-- home button -->
-                <a href="#" class="btn">Discover Now</a>
             </div>
         </section>
 
@@ -98,19 +92,19 @@ if (isset($_POST['loginUser'])) {
                 <div class="input-group">
                     <label for="email">Entrez votre email</label>
                     <div class="icon-input-container">
-                        <input type="text"autocomplete="off"id="email" name="email" placeholder="Votre email">
+                        <input type="text" autocomplete="off" id="email" name="email" placeholder="Votre email">
                     </div>
                 </div>
 
                 <div class="input-group">
                     <label for="password">Mot de passe</label>
                     <div class="icon-input-container">
-                        <input type="password"autocomplete="off"id="password" name="password" placeholder="Votre mot de passe">
+                        <input type="password" autocomplete="off" id="password" name="password" placeholder="Votre mot de passe">
                     </div>
                 </div>
 
                 <button type="submit" name="loginUser">Je me connecte</button>
-                <p>Vous êtes nouveau ici ? <a href="inscription.php"> S'inscrire</a></p>
+                <div class="login"><span>êtes nouveau ici ? Cliquer pour </span><a href="inscription.php" class=".login"> S'inscrire</a></div>
             </form>
         </div>
     </main>

@@ -9,8 +9,8 @@ $errors = [];
 $messages = [];
 if (isset($_POST['addUser'])) {
     /*
-        @todo ajouter la vérification sur les champs
-    */
+                @todo ajouter la vérification sur les champs
+            */
     $res = addUser($pdo, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
     if ($res) {
         $messages[] = 'Merci pour votre inscription';
@@ -18,9 +18,7 @@ if (isset($_POST['addUser'])) {
         $errors[] = 'Une erreur s\'est produite lors de votre inscription';
     }
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,11 +42,12 @@ if (isset($_POST['addUser'])) {
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <li><a href="actualites.php">Actualités</a></li>
+                <!-- <li><a href="actualites.php">Actualités</a></li> -->
+                <li><a href="actualites.php">Nos vehicules</a></li>
                 <li><a href="a_propos.php">A Propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
+                <li><a href="login.php">se connecter</a></li>
+                <!-- <li><a href="inscription.php">Inscription</a></li> -->
             </ul>
             <!-- search icon -->
             <i class='bx bx-search' id="search-icon"></i>
@@ -72,10 +71,10 @@ if (isset($_POST['addUser'])) {
                 <?= $message; ?>
             </div>
         <?php } ?>
-        
+
         <?php foreach ($errors as $error) { ?>
             <div class="alert alert-danger" role="alert">
-                <?= $error; ?>
+            <?= $error; ?>
             </div>
         <?php } ?>
 

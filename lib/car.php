@@ -18,12 +18,12 @@
 //     }
 // }
 
-function getServiceById(PDO $pdo, int $id){
-    $query = $pdo->prepare("SELECT * FROM articles WHERE id = :id");
-    $query->bindValue(":id", $id, PDO::PARAM_INT);
-    $query->execute();
-    return $query->fetch(PDO::FETCH_ASSOC);
-}
+// function getServiceById(PDO $pdo, int $id){
+//     $query = $pdo->prepare("SELECT * FROM articles WHERE id = :id");
+//     $query->bindValue(":id", $id, PDO::PARAM_INT);
+//     $query->execute();
+//     return $query->fetch(PDO::FETCH_ASSOC);
+// }
 
 
 //===========================================================================================================>
@@ -65,7 +65,7 @@ function getCars(PDO $pdo, int $limit = null, $page = null): array|bool
     return $result;
 }
 
-function getTotalArticles(PDO $pdo): int|bool
+function getTotalCars(PDO $pdo): int|bool
 {
     $sql = "SELECT COUNT(*) as total FROM articles";
     $query = $pdo->prepare($sql);
@@ -75,7 +75,7 @@ function getTotalArticles(PDO $pdo): int|bool
     return $result['total'];
 }
 
-function saveArticle(PDO $pdo, string $title, string $content, string|null $image, int $category_id, int $id = null): bool
+function saveCar(PDO $pdo, string $title, string $content, string|null $image, int $category_id, int $id = null): bool
 {
     if ($id === null) {
         // si id est null je une requete insert
@@ -97,7 +97,7 @@ function saveArticle(PDO $pdo, string $title, string $content, string|null $imag
     return $query->execute();
 }
 
-function deleteArticle(PDO $pdo, int $id): bool
+function deleteCar(PDO $pdo, int $id): bool
 {
 
     $query = $pdo->prepare("DELETE FROM articles WHERE id = :id");

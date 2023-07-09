@@ -7,13 +7,13 @@ adminOnly();
 
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
-require_once __DIR__ . "/../lib/article.php";
+require_once __DIR__ . "/../lib/car.php";
 require_once __DIR__ . "/../lib/category.php";
 
 
 $errors = [];
 $messages = [];
-$article = [
+$produit = [
     'title' => '',
     'content' => '',
     'category_id' => ''
@@ -22,14 +22,14 @@ $article = [
 $categories = getCategories($pdo);
 
 if (isset($_GET['id'])) {
-    //requête pour récupérer les données de l'article en cas de modification
-    $article = getCarById($pdo, $_GET['id']);
-    if ($article === false) {
+    //requête pour récupérer les données de produits en cas de modification
+    $produit = getCarById($pdo, $_GET['id']);
+    if ($produit === false) {
         $errors[] = "L'article n\'existe pas";
     }
-    $pageTitle = "Formulaire modification article";
+    //$pageTitle = "Formulaire modification article";
 } else {
-    //  $pageTitle = "Formulaire ajout article";
+      $pageTitle = "Formulaire ajout article";
 }
 
 // on test si le formulaire a bien été envoyé avec saveArticle qui le button recupéré en bas 
@@ -80,7 +80,7 @@ if (isset($_POST['saveArticle'])) {
        les informations dans les champs. C'est utile pas exemple si on upload un mauvais
        fichier et qu'on ne souhaite pas perdre les données qu'on avait saisit.
     */
-    $article = [
+    $produit= [
         'title' => $_POST['title'],
         'content' => $_POST['content'],
         'category_id' => $_POST['category_id'],
@@ -94,14 +94,14 @@ if (isset($_POST['saveArticle'])) {
         } else {
             $id = null;
         }
-        // On passe toutes les données à la fonction saveArticle
-        $res = saveArticle($pdo, $_POST["title"], $_POST["content"], $fileName, (int)$_POST["category_id"], $id);
+        // On passe toutes les données à la fonction saveCar
+        $res = saveCar($pdo, $_POST["title"], $_POST["content"], $fileName, (int)$_POST["category_id"], $id);
 
         if ($res) {
             $messages[] = "L'article a bien été sauvegardé";
             //On vide le tableau article pour avoir les champs de formulaire vides
             if (!isset($_GET["id"])) {
-                $article = [
+                $produit = [
                     'title' => '',
                     'content' => '',
                     'category_id' => ''
@@ -126,7 +126,7 @@ if (isset($_POST['saveArticle'])) {
         <?= $error; ?>
     </div>
 <?php } ?>
-<?php if ($article !== false) { ?>
+<?php if ($produit !== false) { ?>
 
 
 
@@ -136,7 +136,7 @@ if (isset($_POST['saveArticle'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assetsAdmin/css/article.css">
+    <link rel="stylesheet" href="./assetsAdmin/css/produit.css">
     <title>Page d'article</title>
     </head>
 <body>
@@ -153,9 +153,9 @@ if (isset($_POST['saveArticle'])) {
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <li><a href="articles.php">Articles</a></li>
-                <li><a href="article.php">Ajouter</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
+                <li><a href="gestions.php">gestions</a></li>
+                <!-- <li><a href="produit.php">Ajouté_produits</a></li> -->
+                <li><a href="add_employe.php">Employé</a></li>
                 <li><a href="../index.php">Déconnexion</a></li>
             </ul>
             <!-- search icon -->
@@ -180,14 +180,14 @@ if (isset($_POST['saveArticle'])) {
                 <div class="input-group">
                     <label for="title">Titre</label>
                     <div class="icon-input-container">
-                        <input type="text" autocomplete="off" id="title" name="title" placeholder="Titre" value="<?= $article['title']; ?>">
+                        <input type="text" autocomplete="off" id="title" name="title" placeholder="Titre" value="<?= $produit['title']; ?>">
                     </div>
                 </div>
 
                 <div class="input-group">
                     <label for="content">Contenu</label>
                     <div class="icon-input-container">
-                        <textarea name="content" id="content" cols="67" rows="5" placeholder="Contenu"><?= $article['content']; ?></textarea>
+                        <textarea name="content" id="content" cols="67" rows="5" placeholder="Contenu"><?= $produit['content']; ?></textarea>
                     </div>
                 </div>
 
@@ -197,20 +197,20 @@ if (isset($_POST['saveArticle'])) {
                     <select name="category_id" id="category">
                         <?php foreach ($categories as $category) { ?>
                             <option value="1" <?php if (
-                                                        isset($article['category_id']) &&
-                                                        $article['category_id'] == $category['id']
+                                                        isset($produit['category_id']) &&
+                                                        $produit['category_id'] == $category['id']
                                                     ) { ?>selected="selected" <?php }; ?>><?= $category['name'] ?>
                             </option>
                             <?php } ?>
                     </select>
                 </div>
 
-                <?php if (isset($_GET['id']) && isset($article['image'])) { ?>
+                <?php if (isset($_GET['id']) && isset($produit['image'])) { ?>
                     <p>
-                        <img src="<?= _ARTICLES_IMAGES_FOLDER_ . $article['image'] ?>" alt="<?= $article['title'] ?>" width="100">
+                        <img src="<?= _ARTICLES_IMAGES_FOLDER_ . $produit['image'] ?>" alt="<?= $produit['title'] ?>" width="100">
                         <label for="delete_image">Supprimer l'image</label>
                         <input type="checkbox" name="delete_image" id="delete_image">
-                        <input type="hidden" name="image" value="<?= $article['image']; ?>">
+                        <input type="hidden" name="image" value="<?= $produit['image']; ?>">
                     </p>
                 <?php } ?>
 

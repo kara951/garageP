@@ -1,16 +1,15 @@
 <?php
 require_once __DIR__."/lib/config.php";
 require_once __DIR__."/lib/pdo.php";
-require_once __DIR__ ."/lib/article.php";
+require_once __DIR__ ."/lib/car.php";
 require_once __DIR__ ."/lib/session.php";
-//require_once __DIR__ ."/templates/header.php";
 
 // info base de données
 $cars = getCars($pdo, 3);
 
 // À REPRNDRE ICI DEMAIN INCHALLAH
 
-// $cars = getService($pdo, 3);
+//$cars = getService($pdo, 3);
 
 ?>
 
@@ -36,11 +35,12 @@ $cars = getCars($pdo, 3);
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <li><a href="actualites.php">Actualités</a></li>
+                <!-- <li><a href="actualites.php">Actualités</a></li> -->
+                <li><a href="actualites.php">Nos vehicules</a></li>
                 <li><a href="a_propos.php">A Propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
+                <li><a href="login.php">se connecter</a></li>
+                <!-- <li><a href="inscription.php">Inscription</a></li> -->
             </ul>
             <!-- search icon -->
             <i class='bx bx-search' id="search-icon"></i>
@@ -56,12 +56,7 @@ $cars = getCars($pdo, 3);
         <!-- Home section-->
         <section class="home" id="home">
             <div class="home-text">
-                <h1>We Have everything <br> Your <span>Car</span> Need</h1>
-                <p>Lorem ipsum dolor sit amet consectetur <br> adipisicing elit. Corporis,
-                    dolorum quaerat iste aperiam quia
-                </p>
-                <!-- home button -->
-                <a href="#" class="btn">Discover Now</a>
+                <h1>Vous êtes à la  Page <br> d'accueil du  <span>GARAGE</span> Mr PARROT</h1>
             </div>
         </section>
 
@@ -82,23 +77,22 @@ $cars = getCars($pdo, 3);
             </div>
         </section>
 
-
-        <!-- Parts section -->
+          <!-- Parts section -->
         <section class="parts" id="parts">
             <div class="heading">
                 <span>PRESTATIONS DANS NOS CENTRES</span>
                 <h2>PRESTATIONS DANS NOS CENTRES</h2>
                 <p>Retrouver toutes les listes en un click</p>
-            </div>
+            </div> 
             <!-- Parts Container -->
             <div class="parts-container container">
-                <!-- box1 -->
-                <?php foreach ($services as $key => $service) { ?>
+                 <!-- box1 -->
+                 <?php foreach ($services as $key => $service){?>
                     <?php require __DIR__ . "/templates/article_part.php" ?>
                 <?php } ?>
             </div>    
         </section>
-
+      
 
 
 

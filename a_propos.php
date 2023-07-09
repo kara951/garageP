@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . "/lib/article.php" ?>
+<?php require_once __DIR__ . "/lib/car.php" ?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,11 +24,12 @@
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <li><a href="actualites.php">Actualités</a></li>
+                <!-- <li><a href="actualites.php">Actualités</a></li> -->
+                <li><a href="actualites.php">Nos vehicules</a></li>
                 <li><a href="a_propos.php">A Propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
+                <li><a href="login.php">se connecter</a></li>
+                <!-- <li><a href="inscription.php">Inscription</a></li> -->
             </ul>
             <!-- search icon -->
             <i class='bx bx-search' id="search-icon"></i>
