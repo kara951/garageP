@@ -19,7 +19,7 @@
 // }
 
 // function getServiceById(PDO $pdo, int $id){
-//     $query = $pdo->prepare("SELECT * FROM articles WHERE id = :id");
+//     $query = $pdo->prepare("SELECT * FROM car WHERE id = :id");
 //     $query->bindValue(":id", $id, PDO::PARAM_INT);
 //     $query->execute();
 //     return $query->fetch(PDO::FETCH_ASSOC);
@@ -27,9 +27,9 @@
 
 
 //===========================================================================================================>
-function getCarById(PDO $pdo, int $id)
+function getCarById(PDO $pdo, int $id): array|bool // getCarById
 {
-    $query = $pdo->prepare("SELECT * FROM articles WHERE id = :id");
+    $query = $pdo->prepare("SELECT * FROM car WHERE id = :id");
     $query->bindValue(":id", $id, PDO::PARAM_INT);
     $query->execute();
     return $query->fetch(PDO::FETCH_ASSOC);
@@ -41,7 +41,7 @@ function getCarById(PDO $pdo, int $id)
 function getCars(PDO $pdo, int $limit = null, $page = null): array|bool
 {
 
-    $sql = "SELECT * FROM articles ORDER BY id DESC"; //ORDER BY id DESC  => pour afficher les derniers article.
+    $sql = "SELECT * FROM car ORDER BY id DESC"; //ORDER BY id DESC  => pour afficher les derniers car.
 
     if ($limit && !$page) {
         $sql .= " LIMIT :limit"; // une façons d'écrire une variable
@@ -59,7 +59,7 @@ function getCars(PDO $pdo, int $limit = null, $page = null): array|bool
         $offset = ($page - 1) * $limit;
         $query->bindValue(":offest", $offset, PDO::PARAM_INT);
     }
-    // $query =$pdo->prepare("SELECT * FROM articles");
+    // $query =$pdo->prepare("SELECT * FROM car");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     return $result;
@@ -67,7 +67,7 @@ function getCars(PDO $pdo, int $limit = null, $page = null): array|bool
 
 function getTotalCars(PDO $pdo): int|bool
 {
-    $sql = "SELECT COUNT(*) as total FROM articles";
+    $sql = "SELECT COUNT(*) as total FROM car";
     $query = $pdo->prepare($sql);
     $query->execute();
 
@@ -75,16 +75,26 @@ function getTotalCars(PDO $pdo): int|bool
     return $result['total'];
 }
 
-function saveCar(PDO $pdo, string $title, string $content, string|null $image, int $category_id, int $id = null): bool
+function saveCar(PDO $pdo, string $title, string $content, string $modele, string $annee, string $kilometre, string $vitesse, string $color, string $place, string $porte, string $puissance, string $carburant, string $prix, string|null $image, int $category_id, int $id = null): bool
 {
     if ($id === null) {
-        // si id est null je une requete insert
-        $query = $pdo->prepare("INSERT INTO articles (title, content, image, category_id) "
-            . "VALUES(:title, :content, :image, :category_id)");
+        // si id est null requete insert
+        $query = $pdo->prepare("INSERT INTO car (title, content, modele, annee, kilometre, vitesse, color, place, porte, puissance, carburant, prix, image, category_id) "
+            . "VALUES(:title, :content, :modele, :annee, :kilometre, :vitesse, :color, :place, :porte, :puissance, :carburant, :prix, :image, :category_id)");
     } else {
-        // si on passe in id on fait une update
-        $query = $pdo->prepare("UPDATE `articles` SET `title` = :title, "
+        // si on passe un id on fait une update
+        $query = $pdo->prepare("UPDATE `car` SET `title` = :title, "
             . "`content` = :content, "
+            . "modele = :modele, "
+            . "annee = :annee, "
+            . "kilometre =:kilometre, "
+            . "vitesse =:vitesse, "
+            . "color =:color, "
+            . "place =:place, "
+            . "porte =:porte, "
+            . "puissance =:puissance, "
+            . "carburant =:carburant, "
+            . "prix =:prix, "
             . "image = :image, category_id = :category_id WHERE `id` = :id;");
 
         $query->bindValue(':id', $id, $pdo::PARAM_INT);
@@ -92,6 +102,16 @@ function saveCar(PDO $pdo, string $title, string $content, string|null $image, i
 
     $query->bindValue(':title', $title, $pdo::PARAM_STR);
     $query->bindValue(':content', $content, $pdo::PARAM_STR);
+    $query->bindValue('modele', $modele, $pdo::PARAM_STR);
+    $query->bindValue('annee', $annee, $pdo::PARAM_STR);
+    $query->bindValue('kilometre', $kilometre, $pdo::PARAM_STR);
+    $query->bindValue('vitesse', $vitesse, $pdo::PARAM_STR);
+    $query->bindValue('color', $color, $pdo::PARAM_STR);
+    $query->bindValue('place', $place, $pdo::PARAM_STR);
+    $query->bindValue('porte', $porte, $pdo::PARAM_STR);
+    $query->bindValue('puissance', $puissance, $pdo::PARAM_STR);
+    $query->bindValue('carburant', $carburant, $pdo::PARAM_STR);
+    $query->bindValue('prix', $prix, $pdo::PARAM_STR);
     $query->bindValue(':image', $image, $pdo::PARAM_STR);
     $query->bindValue(':category_id', $category_id, $pdo::PARAM_INT);
     return $query->execute();
@@ -100,7 +120,7 @@ function saveCar(PDO $pdo, string $title, string $content, string|null $image, i
 function deleteCar(PDO $pdo, int $id): bool
 {
 
-    $query = $pdo->prepare("DELETE FROM articles WHERE id = :id");
+    $query = $pdo->prepare("DELETE FROM car WHERE id = :id");
     $query->bindValue(':id', $id, $pdo::PARAM_INT);
 
     $query->execute();

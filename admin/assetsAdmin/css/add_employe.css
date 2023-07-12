@@ -197,7 +197,7 @@ header.shadow #search-icon {
     font-weight: 300;
 }
 
-/* .container-form{
+.container-form{
     max-width: 500px;
     margin: 0 auto;
     margin-top: -120px;
@@ -301,9 +301,9 @@ input::placeholder {
     left: 50%;
     transform: translateX(-50%);
     top: 10px;
-} */
+}
 
-/* form button {
+form button {
     font-size: 20px;
     min-width: 150px;
     display: block;
@@ -319,7 +319,7 @@ input::placeholder {
 }
 form button:hover {
     background-color: #fffcdc;
-} */
+}
 
 
 
@@ -539,7 +539,6 @@ button {
     background: var(--text-color);
     color: #f6f6f6;
     border-top: 2px solid var(--main-color);
-    margin-top: 800px;
 }
 
 .footer-container {

@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__."/lib/config.php";
-require_once __DIR__."/lib/pdo.php";
-require_once __DIR__ ."/lib/car.php";
-require_once __DIR__ ."/lib/session.php";
+require_once __DIR__ . "/lib/config.php";
+require_once __DIR__ . "/lib/pdo.php";
+require_once __DIR__ . "/lib/car.php";
+require_once __DIR__ . "/lib/session.php";
 
 // info base de données
 $cars = getCars($pdo, 3);
@@ -56,7 +56,7 @@ $cars = getCars($pdo, 3);
         <!-- Home section-->
         <section class="home" id="home">
             <div class="home-text">
-                <h1>Vous êtes à la  Page <br> d'accueil du  <span>GARAGE</span> Mr PARROT</h1>
+                <h1>Vous êtes à la Page <br> d'accueil du <span>GARAGE</span> Mr PARROT</h1>
             </div>
         </section>
 
@@ -77,22 +77,27 @@ $cars = getCars($pdo, 3);
             </div>
         </section>
 
-          <!-- Parts section -->
+
+        
+
+        <!-- Parts section -->
         <section class="parts" id="parts">
             <div class="heading">
                 <span>PRESTATIONS DANS NOS CENTRES</span>
                 <h2>PRESTATIONS DANS NOS CENTRES</h2>
                 <p>Retrouver toutes les listes en un click</p>
-            </div> 
+            </div>
             <!-- Parts Container -->
             <div class="parts-container container">
-                 <!-- box1 -->
-                 <?php foreach ($services as $key => $service){?>
-                    <?php require __DIR__ . "/templates/article_part.php" ?>
-                <?php } ?>
-            </div>    
+                <!-- box1 -->
+                <div class="box">
+                    <?php foreach ($services as $key => $service) { ?>
+                        <?php require __DIR__ . "/templates/article_part.php" ?>
+                    <?php } ?>
+                </div>
+            </div>
         </section>
-      
+
 
 
 
@@ -258,4 +263,5 @@ $cars = getCars($pdo, 3);
     <script src="../JS/index.js"></script>
 
 </body>
+
 </html>

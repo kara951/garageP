@@ -12,11 +12,11 @@ if (isset($_GET['page'])) {
 } else {
   $page = 1;
 }
-$articles = getCars($pdo, _ADMIN_ITEM_PER_PAGE_, $page);
+$Cars = getCars($pdo, _ADMIN_ITEM_PER_PAGE_, $page);
 
-$totalArticles = getTotalCars($pdo);
+$totalCars = getTotalCars($pdo);
 
-$totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
+$totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
 
 ?>
 <!-- ============================================================================================= -->
@@ -28,7 +28,7 @@ $totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assetsAdmin/css/gestions.css">
-  <title>Page d'articles</title>
+  <title>Page gestion des cars</title>
 </head>
 
 <body>
@@ -46,7 +46,7 @@ $totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
       <ul class="navbar">
         <li><a href="index.php" class="active">Accueil</a></li>
         <li><a href="gestions.php">gestions</a></li>
-        <!-- <li><a href="produit.php">Ajouté_produits</a></li> -->
+        <!-- <li><a href="car.php">Ajouté_cars</a></li> -->
         <li><a href="add_employe.php">Employé</a></li>
         <li><a href="../index.php">Déconnexion</a></li>
       </ul>
@@ -63,7 +63,7 @@ $totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
     <!-- Home section-->
     <section class="home" id="home">
       <div class="home-text">
-        <h1>Page de gestion <br> Des <span>Produits du </span> Site</h1>
+        <h1>Page de gestion <br> Des <span>Véhicules du </span> Site</h1>
       </div>
     </section>
 
@@ -90,14 +90,14 @@ $totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
         </tr>
       </head>
       <tbody>
-        <?php foreach ($articles as $article) { ?>
+        <?php foreach ($cars as $car) { ?>
           <tr>
-            <th scope="row"><?= $article["id"]; ?></th>
-            <td><?= $article["title"]; ?></td>
+            <th scope="row"><?= $car["id"]; ?></th>
+            <td><?= $car["title"]; ?></td>
             <td>
-              <a href="produit.php?id=<?= $article['id'] ?>">Modifier</a>
-              <a href="produit_delete.php?id=<?= $article['id'] ?>" onclick="
-                  return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer
+              <a href="car.php?id=<?= $car['id'] ?>">Modifier</a>
+              <a href="car_delete.php?id=<?= $car['id'] ?>" onclick="
+                  return confirm('Êtes-vous sûr de vouloir supprimer ce véhicule ?')">Supprimer
               </a>
             </td>
           </tr>
@@ -120,7 +120,7 @@ $totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
         </ul>
       </nav>
     </div>
-    <li class="ajout"><a href="produit.php">Cliquer pour ajouter de produits</a></li>
+    <li class="ajout"><a href="car.php">Cliquer pour ajouter de véhicule</a></li>
   </main>
 
   <footer>

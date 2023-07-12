@@ -4,7 +4,6 @@ require_once 'lib/tools.php';
 require_once 'lib/pdo.php';
 require_once 'lib/user.php';
 
-
 $errors = [];
 $messages = [];
 if (isset($_POST['addUser'])) {
@@ -18,16 +17,19 @@ if (isset($_POST['addUser'])) {
         $errors[] = 'Une erreur s\'est produite lors de votre inscription';
     }
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/inscription.css">
     <title>Page d'inscription</title>
 </head>
+
 <body>
     <!-- navbar -->
     <header>
@@ -59,6 +61,7 @@ if (isset($_POST['addUser'])) {
     </header>
 
     <main>
+
         <!-- Home section-->
         <section class="home" id="home">
             <div class="home-text">
@@ -74,7 +77,7 @@ if (isset($_POST['addUser'])) {
 
         <?php foreach ($errors as $error) { ?>
             <div class="alert alert-danger" role="alert">
-            <?= $error; ?>
+                <?= $error; ?>
             </div>
         <?php } ?>
 

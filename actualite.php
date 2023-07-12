@@ -13,11 +13,10 @@ if (isset($_GET['id'])) {
 
 
     if ($car["image"] === null) {
-        $imagePath = "assets/images/car6.jpg";
+        $imagePath = _ASSETS_IMAGES_FOLDER_."default-article.jpg";
     } else {
-        $imagePath = "./uploads/cars" . $car["image"];
+        $imagePath =  _CARS_IMAGES_FOLDER_.$car["image"];
     }
-
 
 
     if (!$car) {
@@ -32,14 +31,12 @@ if (isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/actualite.css">
     <title>A propos</title>
 </head>
-
 <body>
     <header>
         <!-- <h1>GARAGE DE VINCENT PERROT</h1> -->
@@ -82,9 +79,23 @@ if (isset($_GET['id'])) {
             <section class="home" id="home">
                 <div class="home-text">
                     <!-- Page d'article -->
-                    <img src="<?= $imagePath ?>" alt="cars">
-                    <h2><br><?= $car["title"]; ?></h2>
-                    <?= $car["content"]; ?>  
+                    <img src="<?=$imagePath;?>" alt="cars">
+                    <div>
+
+                        <h3><br><?=htmlentities($car["title"]); ?></h3>
+                        <h5><?= htmlentities($car["modele"]) ?></h5>
+                        <h5><?= htmlentities($car["annee"]) ?></h5>
+                        <h5><?= htmlentities($car["kilometre"]) ?></h5>
+                        <h5><?= htmlentities($car["vitesse"]) ?></h5>
+                        <h5><?= htmlentities($car["color"]) ?></h5>
+                        <h5><?= htmlentities($car["place"]) ?></h5>
+                        <h5><?= htmlentities($car["porte"]) ?></h5>
+                        <h5><?= htmlentities($car["puissance"]) ?></h5>
+                        <h5><?= htmlentities($car["carburant"]) ?></h5>
+                        <h5><?= htmlentities($car["prix"]) ?></h5>
+                        <h5><?= htmlentities($car["content"]); ?></h5>
+
+                    </div>  
                 </div>
             </section>
         <?php } else { ?>
@@ -118,7 +129,8 @@ if (isset($_GET['id'])) {
                         <a href="#">Cookie Policy</a>
                     </div>
                     <div class="footer-box">
-                        <h3>Contact</h3>
+                        <!-- <h3>Contact</h3> -->
+                        <li><a href="contact.php">Contact</a></li>
                         <p>United states</p>
                         <p>Japan</p>
                         <p>Germany</p>

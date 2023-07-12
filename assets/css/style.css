@@ -209,8 +209,8 @@ header.shadow #search-icon {
     /* flex: 1 1 17rem;
     position: relative;
     height: 200px;
-    border-radius: 0.5rem; */
-    /* overflow: hidden; */
+    border-radius: 0.5rem;
+    overflow: hidden; */
 
 
 
@@ -228,19 +228,19 @@ header.shadow #search-icon {
 
 .cars-container .box img {
     /* ancien code  */
-    /* width: 100%;
+    width: 100%;
     height: 100%;
     object-fit: cover; 
-    overflow: hidden;  */
+    overflow: hidden; 
 
 
 
-    /* nouveau code  */
+    /* nouveau code   */
     /* width: 100%;
-    height: 150px; */
+    height: 150px; 
     object-fit: contain;
     object-position: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; */
 }
 
 .cars-container .box img:hover {

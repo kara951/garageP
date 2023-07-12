@@ -66,13 +66,19 @@
                     <label for="textarea">Nous contacté</label>
                     <div class="icon-input-container">
                         <textarea autocomplete="off" id="textarea" name="textarea" cols="67" rows="25" placeholder="Votre message"></textarea>
-                        <!-- <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea> -->
                     </div>
                 </div>
 
                 <button type="submit">Envoyer</button>
             </form>
         </div>
+
+
+
+
+
+
+
     </main>
 
     <footer>
