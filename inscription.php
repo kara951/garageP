@@ -22,14 +22,12 @@ if (isset($_POST['addUser'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/inscription.css">
     <title>Page d'inscription</title>
 </head>
-
 <body>
     <!-- navbar -->
     <header>
@@ -44,7 +42,7 @@ if (isset($_POST['addUser'])) {
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <!-- <li><a href="actualites.php">Actualités</a></li> -->
+                <li><a href="services.php">Nos services</a></li>
                 <li><a href="actualites.php">Nos vehicules</a></li>
                 <li><a href="a_propos.php">A Propos</a></li>
                 <li><a href="contact.php">Contact</a></li>

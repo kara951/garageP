@@ -52,7 +52,6 @@ if (isset($_POST['saveCar'])) {
     if (isset($_FILES["file"]["tmp_name"]) && $_FILES["file"]["tmp_name"] != '') {
 
         // getimagesize elle verifie si c'est une image elle telecharge si c'est autre chose elle ne peut pas
-        // BEUG................
         $checkImage = getimagesize($_FILES["file"]["tmp_name"]);
         if ($checkImage !== false) {
             $fileName = slugify(basename($_FILES["file"]["name"]));
@@ -87,7 +86,7 @@ if (isset($_POST['saveCar'])) {
         }
     }
     /* On stocke toutes les données envoyés dans un tableau pour pouvoir afficher
-       les informations dans les champs. C'est utile pas exemple si on upload un mauvais
+       les informations dans les champs. C'est utile par exemple si on upload un mauvais
        fichier et qu'on ne souhaite pas perdre les données qu'on avait saisit.
     */
     $car = [
@@ -186,7 +185,7 @@ if (isset($_POST['saveCar'])) {
                 <ul class="navbar">
                     <li><a href="index.php" class="active">Accueil</a></li>
                     <li><a href="gestions.php">gestions</a></li>
-                    <!-- <li><a href="car.php">Ajouté_car</a></li> -->
+                    <li><a href="gestionServices.php">gestions services</a></li>
                     <li><a href="add_employe.php">Employé</a></li>
                     <li><a href="../index.php">Déconnexion</a></li>
                 </ul>
@@ -298,10 +297,8 @@ if (isset($_POST['saveCar'])) {
                         <!--  class="form-select" -->
                         <select name="category_id" id="category">
                             <?php foreach ($categories as $category) { ?>
-                                <option value="1" <?php if (
-                                                        isset($car['category_id']) &&
-                                                        $car['category_id'] == $category['id']
-                                                    ) { ?>selected="selected" <?php }; ?>><?= $category['name'] ?>
+                                <option value="1" <?php if (isset($car['category_id']) && $car['category_id'] == $category['id'])
+                                                    { ?>selected="selected" <?php }; ?>><?= $category['name'] ?>
                                 </option>
                             <?php } ?>
                         </select>

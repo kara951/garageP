@@ -8,9 +8,8 @@ require_once  '../lib/user.php';
 $errors = [];
 $messages = [];
 if (isset($_POST['addUser'])) {
-    /*
-                @todo ajouter la vérification sur les champs
-            */
+    
+    //@todo ajouter la vérification sur les champs     
     $res = addUser($pdo, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
     if ($res) {
         $messages[] = 'Merci pour votre inscription';
@@ -45,7 +44,7 @@ if (isset($_POST['addUser'])) {
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="gestions.php">gestions</a></li>
-                <!-- <li><a href="car.php">Ajouté_cars</a></li> -->
+                <li><a href="gestionServices.php">gestions services</a></li>
                 <li><a href="add_employe.php">Employé</a></li>
                 <li><a href="../index.php">Déconnexion</a></li>
             </ul>

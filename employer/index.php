@@ -18,22 +18,19 @@ adminOnly();
 // 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assetsAdmin/css/style.css">
-    <title>Admin Garage</title>
+    <link rel="stylesheet" href="./assetsEmployer/css/style.css">
+    <title>Page Employé</title>
 </head>
-
 <body>
     <header>
         <div class="nav container">
-            <!-- <img width="15" src="./assets/images/logo-tech-trendz.png" alt="logo-garage"> -->
+            <img width="15" src="./assets/images/.png" alt="logo-garage">
             <!-- menu Icon -->
             <i class='bx bx-menu' id="menu-icon"></i>
             <!-- Logo -->
@@ -41,18 +38,18 @@ adminOnly();
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <li><a href="articles.php">Articles</a></li>
-                <li><a href="article.php">Ajouter</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
+                <li><a href="gestions.php">gestions</a></li>
+                <!-- <li><a href="article.php">Ajouter</a></li> -->
+                <!-- <li><a href="inscription.php">Inscription</a></li> -->
                 <li><a href="../index.php">Déconnexion</a></li>
             </ul>
 
             <!-- search icon -->
             <i class='bx bx-search' id="search-icon"></i>
             <!-- search box -->
-            <!-- <div class="search-box container">
+            <div class="search-box container">
                 <input type="search" name="" id="" placeholder="search here ...">
-            </div> -->
+            </div>
         </div>
     </header>
 
@@ -60,7 +57,7 @@ adminOnly();
          <!-- Home section-->
          <section class="home" id="home">
             <div class="home-text">
-                <h1>BIENVENUE  À LA <br>PAGE <span>ADMINISTRATION </span> DU GARAGE</h1>
+                <h1>BIENVENUE  À LA <br>PAGE <span>EMPLOYÉ</span> DU GARAGE</h1>
                 <!-- home button -->
                 <!-- <a href="#" class="btn">Discover Now</a> -->
             </div>

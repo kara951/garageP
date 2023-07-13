@@ -1,34 +1,12 @@
 <?php
-require_once 'lib/config.php';
-require_once 'lib/session.php';
-require_once 'lib/pdo.php';
-require_once 'lib/user.php';
+require_once __DIR__ . "/lib/config.php";
+require_once __DIR__ . "/lib/pdo.php";
+require_once __DIR__ . "/lib/service.php";
 
 
+//require_once __DIR__ . "/templates/header.php";
 
-$errors = [];
-$messages = [];
-
-if (isset($_POST['loginUser'])) {
-
-    $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
-
-    if ($user) {
-        session_regenerate_id(true);
-        $_SESSION['user'] = $user;
-        if ($user['role'] === 'admin') {
-            // beug 
-            header('location: admin/index.php');
-            if ($user['role'] === 'employe'){
-                header('location: employe/index.php');
-            }
-        } else {
-            header('location: index.php');
-        }
-    } else {
-        $errors[] = 'Email ou mot de passe incorrect';
-    }
-}
+$cars = getArticles($pdo);
 
 ?>
 
@@ -38,14 +16,15 @@ if (isset($_POST['loginUser'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/login.css">
-    <title>A propos</title>
+    <link rel="stylesheet" href="./assets/css/actualites.css">
+    <title>Document</title>
 </head>
 <body>
     <!-- navbar -->
     <header>
+
         <!-- <h1>GARAGE DE VINCENT PERROT</h1> -->
-        <!-- nav container -->
+        <!-- vav container -->
         <div class="nav container">
             <!-- <img width="15" src="./assets/images/logo-tech-trendz.png" alt="logo-garage"> -->
             <!-- menu Icon -->
@@ -70,7 +49,6 @@ if (isset($_POST['loginUser'])) {
             </div>
         </div>
     </header>
-
     <main>
         <!-- Home section-->
         <section class="home" id="home">
@@ -79,39 +57,15 @@ if (isset($_POST['loginUser'])) {
             </div>
         </section>
 
-        <?php foreach ($messages as $message) { ?>
-            <div class="alert alert-success" role="alert">
-                <?= $message; ?>
-            </div>
-        <?php } ?>
-        <?php foreach ($errors as $error) { ?>
-            <div class="alert alert-danger" role="alert">
-                <?= $error; ?>
-            </div>
-        <?php } ?>
-
-        <div class="container-form">
-            <form action="" method="post">
-                <div class="input-group">
-                    <label for="email">Entrez votre email</label>
-                    <div class="icon-input-container">
-                        <input type="text" autocomplete="off" id="email" name="email" placeholder="Votre email">
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label for="password">Mot de passe</label>
-                    <div class="icon-input-container">
-                        <input type="password" autocomplete="off" id="password" name="password" placeholder="Votre mot de passe">
-                    </div>
-                </div>
-
-                <button type="submit" name="loginUser">Je me connecte</button>
-                <div class="login"><span>êtes nouveau ici ? Cliquer pour </span><a href="inscription.php" class=".login"> S'inscrire</a></div>
-            </form>
+        <div class=" cars-container container">
+            <!--box cars" id="cars -->
+            <?php foreach ($cars as $key => $car) { ?>
+                <?php require __DIR__ . "/templates/article_part.php" ?>
+            <?php } ?>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer>
         <section class="footer">
             <div class="footer-container container">
@@ -146,13 +100,13 @@ if (isset($_POST['loginUser'])) {
             </div>
         </section>
     </footer>
+
     <!-- copyright -->
     <div class="copyright">
         <p>&#169; CarpoolVenom All Right Reserved</p>
     </div>
-
+    <!-- link to js -->
     <script src="../JS/index.js"></script>
-
 </body>
 
 </html>

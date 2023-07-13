@@ -22,7 +22,7 @@
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <!-- <li><a href="actualites.php">Actualités</a></li> -->
+                <li><a href="services.php">Nos services</a></li>
                 <li><a href="actualites.php">Nos vehicules</a></li>
                 <li><a href="a_propos.php">A Propos</a></li>
                 <li><a href="contact.php">Contact</a></li>

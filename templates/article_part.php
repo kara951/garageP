@@ -1,13 +1,16 @@
 <?php
 
 if ($car["image"] === null) {
-    $imagePath = _ASSETS_IMAGES_FOLDER_ . "default-article.jpg";
+    $imagePath =  "assets/images/default-car.jpg";
+    //_ASSETS_IMAGES_FOLDER_ . "assets/images/default-car.jpg";
 } else {
-    $imagePath =  _CARS_IMAGES_FOLDER_ . $car["image"];
+    $imagePath =  "uploads/cars/" . $car['image'];
+    //_CARS_IMAGES_FOLDER_ . $car["image"];
 }
 ?>
 
 <!-- <div> -->
+
 <div class="box">
     <img src="<?= $imagePath ?>" alt="<?= htmlentities($car["title"]) ?> ">
     <!-- <div> -->
@@ -22,8 +25,8 @@ if ($car["image"] === null) {
     <span><?= htmlentities($car["puissance"]) ?><br></span>
     <span><?= htmlentities($car["carburant"]) ?><br></span>
     <span><?= htmlentities($car["prix"]) ?><br></span>
-
+    
     <a href="actualite.php?id=<?= $car["id"] ?>">Détails<i class='bx bx-right-arrow-alt'></i></a>
     <!-- </div> -->
 </div>
-<!-- </div> -->
+

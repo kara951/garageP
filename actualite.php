@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__ . "/lib/config.php";
 require_once __DIR__ . "/lib/pdo.php";
-require_once __DIR__ . "/lib/car.php";// modif
+require_once __DIR__ . "/lib/car.php";
+require_once __DIR__ . "/lib/service.php";
 
 
 
@@ -10,17 +11,21 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     $car = getCarById($pdo, $id);
-
-
     if ($car["image"] === null) {
-        $imagePath = _ASSETS_IMAGES_FOLDER_."default-article.jpg";
+        $imagePath = _ASSETS_IMAGES_FOLDER_ . "assets/images/default-car.jpg";
     } else {
-        $imagePath =  _CARS_IMAGES_FOLDER_.$car["image"];
+        $imagePath =  _CARS_IMAGES_FOLDER_ . $car["image"];
     }
-
 
     if (!$car) {
         $error = true;
+    }
+
+    $artcle = getArticleById($pdo, $id);
+    if ($article['imag'] === null) {
+        $imagePath = _ASSETS_IMAGES_FOLDER_ . "assets/imageProduit/part1.png";
+    } else {
+        $imagePath = _ARTICLES_IMAGES_FOLDER_ . $articles['image'];
     }
 } else {
     $error = true;
@@ -31,12 +36,14 @@ if (isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/actualite.css">
     <title>A propos</title>
 </head>
+
 <body>
     <header>
         <!-- <h1>GARAGE DE VINCENT PERROT</h1> -->
@@ -50,7 +57,7 @@ if (isset($_GET['id'])) {
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <!-- <li><a href="actualites.php">Actualités</a></li> -->
+                <li><a href="services.php">Nos services</a></li>
                 <li><a href="actualites.php">Nos vehicules</a></li>
                 <li><a href="a_propos.php">A Propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
@@ -76,26 +83,31 @@ if (isset($_GET['id'])) {
 
         <?php if (!$error) { ?>
             <!-- Home section-->
-            <section class="home" id="home">
-                <div class="home-text">
-                    <!-- Page d'article -->
-                    <img src="<?=$imagePath;?>" alt="cars">
-                    <div>
-
-                        <h3><br><?=htmlentities($car["title"]); ?></h3>
-                        <h5><?= htmlentities($car["modele"]) ?></h5>
-                        <h5><?= htmlentities($car["annee"]) ?></h5>
-                        <h5><?= htmlentities($car["kilometre"]) ?></h5>
-                        <h5><?= htmlentities($car["vitesse"]) ?></h5>
-                        <h5><?= htmlentities($car["color"]) ?></h5>
-                        <h5><?= htmlentities($car["place"]) ?></h5>
-                        <h5><?= htmlentities($car["porte"]) ?></h5>
-                        <h5><?= htmlentities($car["puissance"]) ?></h5>
-                        <h5><?= htmlentities($car["carburant"]) ?></h5>
-                        <h5><?= htmlentities($car["prix"]) ?></h5>
-                        <h5><?= htmlentities($car["content"]); ?></h5>
-
-                    </div>  
+            <section class="blog" id="blog">
+                <div class="heading">
+                    <span>Blog & News </span>
+                    <h2>Our Blog content</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, mollitia.</p>
+                </div>
+                <div class="blog-container  container">
+                    <div class="box">
+                        <!-- Page d'article -->
+                        <!-- <img src="<? //= $imagePath; 
+                                        ?>" alt="car"> -->
+                        <img src="uploads/cars/<?= $car['image'] ?>" alt="default " width="100px;">
+                        <h3><br><?= htmlentities($car["title"]); ?></h3>
+                        <p><?= htmlentities($car["modele"]) ?></p>
+                        <p><?= htmlentities($car["annee"]) ?></p>
+                        <p><?= htmlentities($car["kilometre"]) ?></p>
+                        <p><?= htmlentities($car["vitesse"]) ?></p>
+                        <p><?= htmlentities($car["color"]) ?></p>
+                        <p><?= htmlentities($car["place"]) ?></p>
+                        <p><?= htmlentities($car["porte"]) ?></p>
+                        <p><?= htmlentities($car["puissance"]) ?></p>
+                        <p><?= htmlentities($car["carburant"]) ?></p>
+                        <p><?= htmlentities($car["prix"]) ?></p>
+                        <p><?= htmlentities($car["content"]); ?></p>
+                    </div>
                 </div>
             </section>
         <?php } else { ?>

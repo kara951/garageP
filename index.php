@@ -2,8 +2,11 @@
 require_once __DIR__ . "/lib/config.php";
 require_once __DIR__ . "/lib/pdo.php";
 require_once __DIR__ . "/lib/car.php";
+require_once __DIR__ . "/lib/service.php";
 require_once __DIR__ . "/lib/session.php";
 
+
+$articles = getArticles($pdo, 4);
 // info base de données
 $cars = getCars($pdo, 3);
 
@@ -15,12 +18,14 @@ $cars = getCars($pdo, 3);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Document</title>
 </head>
+
 <body>
     <!-- navbar -->
     <header>
@@ -35,7 +40,7 @@ $cars = getCars($pdo, 3);
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <!-- <li><a href="actualites.php">Actualités</a></li> -->
+                <li><a href="services.php">Nos services</a></li>
                 <li><a href="actualites.php">Nos vehicules</a></li>
                 <li><a href="a_propos.php">A Propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
@@ -78,7 +83,7 @@ $cars = getCars($pdo, 3);
         </section>
 
 
-        
+
 
         <!-- Parts section -->
         <section class="parts" id="parts">
@@ -91,14 +96,12 @@ $cars = getCars($pdo, 3);
             <div class="parts-container container">
                 <!-- box1 -->
                 <div class="box">
-                    <?php foreach ($services as $key => $service) { ?>
-                        <?php require __DIR__ . "/templates/article_part.php" ?>
+                    <?php foreach ($articles as $key => $article) { ?>
+                        <?php require __DIR__ . "/templates/service_part.php" ?>
                     <?php } ?>
                 </div>
             </div>
         </section>
-
-
 
 
 

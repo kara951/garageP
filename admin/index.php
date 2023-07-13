@@ -40,7 +40,7 @@ adminOnly();
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="gestions.php">gestions</a></li>
-                <!-- <li><a href="car.php">Ajouté_cars</a></li> -->
+                <li><a href="gestionServices.php">gestions services</a></li>
                 <li><a href="add_employe.php">Employé</a></li>
                 <li><a href="../index.php">Déconnexion</a></li>
             </ul>

@@ -102,16 +102,16 @@ function saveCar(PDO $pdo, string $title, string $content, string $modele, strin
 
     $query->bindValue(':title', $title, $pdo::PARAM_STR);
     $query->bindValue(':content', $content, $pdo::PARAM_STR);
-    $query->bindValue('modele', $modele, $pdo::PARAM_STR);
-    $query->bindValue('annee', $annee, $pdo::PARAM_STR);
-    $query->bindValue('kilometre', $kilometre, $pdo::PARAM_STR);
-    $query->bindValue('vitesse', $vitesse, $pdo::PARAM_STR);
-    $query->bindValue('color', $color, $pdo::PARAM_STR);
-    $query->bindValue('place', $place, $pdo::PARAM_STR);
-    $query->bindValue('porte', $porte, $pdo::PARAM_STR);
-    $query->bindValue('puissance', $puissance, $pdo::PARAM_STR);
-    $query->bindValue('carburant', $carburant, $pdo::PARAM_STR);
-    $query->bindValue('prix', $prix, $pdo::PARAM_STR);
+    $query->bindValue(':modele', $modele, $pdo::PARAM_STR);
+    $query->bindValue(':annee', $annee, $pdo::PARAM_STR);
+    $query->bindValue(':kilometre', $kilometre, $pdo::PARAM_STR);
+    $query->bindValue(':vitesse', $vitesse, $pdo::PARAM_STR);
+    $query->bindValue(':color', $color, $pdo::PARAM_STR);
+    $query->bindValue(':place', $place, $pdo::PARAM_STR);
+    $query->bindValue(':porte', $porte, $pdo::PARAM_STR);
+    $query->bindValue(':puissance', $puissance, $pdo::PARAM_STR);
+    $query->bindValue(':carburant', $carburant, $pdo::PARAM_STR);
+    $query->bindValue(':prix', $prix, $pdo::PARAM_STR);
     $query->bindValue(':image', $image, $pdo::PARAM_STR);
     $query->bindValue(':category_id', $category_id, $pdo::PARAM_INT);
     return $query->execute();

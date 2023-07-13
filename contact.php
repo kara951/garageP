@@ -22,7 +22,7 @@
             <!-- nav liste -->
             <ul class="navbar">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <!-- <li><a href="actualites.php">Actualités</a></li> -->
+                <li><a href="services.php">Nos services</a></li>
                 <li><a href="actualites.php">Nos vehicules</a></li>
                 <li><a href="a_propos.php">A Propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
@@ -42,7 +42,11 @@
         <!-- Home section-->
         <section class="home" id="home">
             <div class="home-text">
-                <h1>We Have everything <br> Your <span>Car</span> Need</h1>
+                <h1>Prenez contact avec <br> nos experts <span>Ils sont </span> votre service</h1>
+                <p>
+                    Prenez contact avec les équipes  pour tous types de demandes. Nos experts <br>sont à votre service pour répondre à vos questions.
+                    Si vous souhaitez prendre rendez-vous directement en ligne, <br>vous pouvez le faire en cliquant sur le bouton ci-dessous.
+                </p>
             </div>
         </section>
 
