@@ -24,7 +24,6 @@ $adminMenu = [
   'inscription.php' => 'Inscription',
   '../logout.php' => 'Déconnexion'
 ];
-
 ?>
 
 
