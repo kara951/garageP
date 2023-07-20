@@ -265,6 +265,7 @@ header.shadow #search-icon {
     color: var(--bg-color);
 }
 
+
 .about {
     display: flex;
     flex-wrap: wrap;

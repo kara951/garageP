@@ -8,7 +8,7 @@ adminOnly();
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/car.php";
-//require_once __DIR__ . "/templates/header.php";
+
 
 $car = false;
 $errors = [];
@@ -42,4 +42,4 @@ if ($car) {
 </div>
 
 <?php
-//require_once('templates/footer.php');
+

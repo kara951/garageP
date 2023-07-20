@@ -75,12 +75,12 @@ function getTotalCars(PDO $pdo): int|bool
     return $result['total'];
 }
 
-function saveCar(PDO $pdo, string $title, string $content, string $modele, string $annee, string $kilometre, string $vitesse, string $color, string $place, string $porte, string $puissance, string $carburant, string $prix, string|null $image, int $category_id, int $id = null): bool
+function saveCar(PDO $pdo, string $title, string $content, string $modele, string $annee, string $kilometre, string $vitesse, string $carburant, string $prix, string|null $image, int $category_id, int $id = null): bool
 {
     if ($id === null) {
         // si id est null requete insert
-        $query = $pdo->prepare("INSERT INTO car (title, content, modele, annee, kilometre, vitesse, color, place, porte, puissance, carburant, prix, image, category_id) "
-            . "VALUES(:title, :content, :modele, :annee, :kilometre, :vitesse, :color, :place, :porte, :puissance, :carburant, :prix, :image, :category_id)");
+        $query = $pdo->prepare("INSERT INTO car (title, content, modele, annee, kilometre, vitesse, carburant, prix, image, category_id) "
+            . "VALUES(:title, :content, :modele, :annee, :kilometre, :vitesse, :carburant, :prix, :image, :category_id)");
     } else {
         // si on passe un id on fait une update
         $query = $pdo->prepare("UPDATE `car` SET `title` = :title, "
@@ -89,10 +89,6 @@ function saveCar(PDO $pdo, string $title, string $content, string $modele, strin
             . "annee = :annee, "
             . "kilometre =:kilometre, "
             . "vitesse =:vitesse, "
-            . "color =:color, "
-            . "place =:place, "
-            . "porte =:porte, "
-            . "puissance =:puissance, "
             . "carburant =:carburant, "
             . "prix =:prix, "
             . "image = :image, category_id = :category_id WHERE `id` = :id;");
@@ -106,10 +102,6 @@ function saveCar(PDO $pdo, string $title, string $content, string $modele, strin
     $query->bindValue(':annee', $annee, $pdo::PARAM_STR);
     $query->bindValue(':kilometre', $kilometre, $pdo::PARAM_STR);
     $query->bindValue(':vitesse', $vitesse, $pdo::PARAM_STR);
-    $query->bindValue(':color', $color, $pdo::PARAM_STR);
-    $query->bindValue(':place', $place, $pdo::PARAM_STR);
-    $query->bindValue(':porte', $porte, $pdo::PARAM_STR);
-    $query->bindValue(':puissance', $puissance, $pdo::PARAM_STR);
     $query->bindValue(':carburant', $carburant, $pdo::PARAM_STR);
     $query->bindValue(':prix', $prix, $pdo::PARAM_STR);
     $query->bindValue(':image', $image, $pdo::PARAM_STR);

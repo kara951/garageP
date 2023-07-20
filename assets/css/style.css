@@ -148,7 +148,7 @@ header.shadow #search-icon {
     min-height: 640px;
     display: flex;
     align-items: center;
-    background: url(../IMG/img/background-home.png);
+    background: url(/assets/images/Background-home.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center left;
@@ -171,6 +171,31 @@ header.shadow #search-icon {
     font-weight: 300;
     margin: 0.5rem 0 1.2rem;
 }
+
+/* animation */
+.slider img {
+    width: 100%;
+    height: 600px;
+    margin: 10px auto;
+    margin-bottom: 20px;
+    padding: 40px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+
+}
+
+/* animation */
+.slider {
+    overflow: hidden;
+}
+
+/* animation */
+.cont-slides {
+    display: flex;
+    animation: slider 25s infinite ease-in-out;
+}
+
 
 .btn {
     padding: 10px 22px;
@@ -205,51 +230,26 @@ header.shadow #search-icon {
 }
 
 .cars-container .box {
-    /* ancien code  */
-    /* flex: 1 1 17rem;
+    flex: 1 1 17rem;
     position: relative;
     height: 200px;
     border-radius: 0.5rem;
-    overflow: hidden; */
-
-
-
-
-    /* nouveau code  */
-    flex: 1 1 17rem;
-    position: relative;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    background: #f6f6f6;
-    border-radius: 0.5rem;
-
+    overflow: hidden;
 }
 
 .cars-container .box img {
-    /* ancien code  */
     width: 100%;
     height: 100%;
-    object-fit: cover; 
-    overflow: hidden; 
-
-
-
-    /* nouveau code   */
-    /* width: 100%;
-    height: 150px; 
-    object-fit: contain;
-    object-position: center;
-    margin-bottom: 1rem; */
+    object-fit: cover;
+    overflow: hidden;
 }
 
 .cars-container .box img:hover {
     transform: scale(1.1);
     transition: 0.5s;
-
 }
 
-.cars-container .box h2, button {
+.cars-container .box h2 {
     position: absolute;
     bottom: 1rem;
     left: 1rem;
@@ -295,7 +295,6 @@ header.shadow #search-icon {
 }
 
 .parts-container {
-    /*  */
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -313,7 +312,6 @@ header.shadow #search-icon {
 }
 
 .parts-container .box img {
-    /* ∞∞∞∞∞∞∞∞∞ */
     width: 100%;
     height: 150px;
     object-fit: contain;
@@ -357,7 +355,6 @@ header.shadow #search-icon {
 }
 
 .blog-container {
-    /* blog-container OK*/
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -464,6 +461,34 @@ header.shadow #search-icon {
     background: var(--text-color);
 }
 
+/* animation */
+@keyframes slider {
+
+    0%,
+    20% {
+        transform: translateX(0);
+    }
+
+    25%,
+    45% {
+        transform: translateX(-100%);
+    }
+
+    50%,
+    70% {
+        transform: translateX(-200%);
+    }
+
+    75%,
+    95% {
+        transform: translateX(-300%);
+    }
+
+    100% {
+        transform: translateX(-400%);
+    }
+}
+
 /* Making responsive */
 @media (max-width: 1080px) {
     .container {
@@ -538,6 +563,10 @@ header.shadow #search-icon {
 
     .navbar.active {
         clip-path: circle(144% at 0% 0%);
+    }
+
+    .cont-slides {
+        margin-top: 115px;
     }
 
     .blog-container .box {

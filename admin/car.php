@@ -20,10 +20,6 @@ $car = [
     'annee' => '',
     'kilometre' => '',
     'vitesse' => '',
-    'color' => '',
-    'place' => '',
-    'porte' => '',
-    'puissance' => '',
     'carburant' => '',
     'prix' => '',
     'category_id' => ''
@@ -96,10 +92,6 @@ if (isset($_POST['saveCar'])) {
         'annee' => $_POST['annee'],
         'kilometre' => $_POST['kilometre'],
         'vitesse' => $_POST['vitesse'],
-        'color' => $_POST['color'],
-        'place' => $_POST['place'],
-        'porte' => $_POST['porte'],
-        'puissance' => $_POST['puissance'],
         'carburant' => $_POST['carburant'],
         'prix' => $_POST['prix'],
         'category_id' => $_POST['category_id'],
@@ -114,7 +106,7 @@ if (isset($_POST['saveCar'])) {
             $id = null;
         }
         // On passe toutes les données à la fonction saveCar
-        $res = saveCar($pdo, $_POST["title"], $_POST["content"], $_POST["modele"], $_POST['annee'], $_POST['kilometre'], $_POST['vitesse'], $_POST['color'], $_POST['place'], $_POST['porte'], $_POST['puissance'], $_POST['carburant'], $_POST['prix'],  $fileName, (int)$_POST["category_id"], $id);
+        $res = saveCar($pdo, $_POST["title"], $_POST["content"], $_POST["modele"], $_POST['annee'], $_POST['kilometre'], $_POST['vitesse'], $_POST['carburant'], $_POST['prix'],  $fileName, (int)$_POST["category_id"], $id);
 
         if ($res) {
             $messages[] = "Véhicule a bien été sauvegardé";
@@ -127,10 +119,6 @@ if (isset($_POST['saveCar'])) {
                     'annee' => '',
                     'kilometre' => '',
                     'vitesse' => '',
-                    'color' => '',
-                    'place' => '',
-                    'porte' => '',
-                    'puissance' => '',
                     'carburant' => '',
                     'prix' => '',
                     'category_id' => ''
@@ -142,71 +130,88 @@ if (isset($_POST['saveCar'])) {
     }
 }
 
+$adminMenu = [
+    'index.php' => 'Accueil',
+    'gestions.php' => 'gestions',
+    'gestionServices.php' => 'gestions services',
+    'inscription.php' => 'Inscription',
+    '../logout.php' => 'Déconnexion'
+];
+
 ?>
-<h1><?= $pageTitle; ?></h1>
 
-<?php foreach ($messages as $message) { ?>
-    <div class="alert alert-success" role="alert">
-        <?= $message; ?>
-    </div>
-<?php } ?>
-<?php foreach ($errors as $error) { ?>
-    <div class="alert alert-danger" role="alert">
-        <?= $error; ?>
-    </div>
-<?php } ?>
-<?php if ($car !== false) { ?>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta type="description" content="Page vehicule admin  du garage v.parrot"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./assetsAdmin/css/car.css">
+    <title>Page véhicule</title>
+</head>
 
+<body>
 
+    <header>
+        <div class="nav container">
+            <!-- menu Icon -->
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <!-- Logo -->
+            <a href="#" class="logo">Garage V.<span>Parrot</span></a>
 
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./assetsAdmin/css/car.css">
-        <title>Page véhicule</title>
-    </head>
-
-    <body>
-        <!-- navbar -->
-        <header>
-            <!-- <h1>GARAGE DE VINCENT PERROT</h1> -->
-            <!-- nav container -->
-            <div class="nav container">
-                <!-- <img width="15" src="./assets/images/logo-tech-trendz.png" alt="logo-garage"> -->
-                <!-- menu Icon -->
-                <i class='bx bx-menu' id="menu-icon"></i>
-                <!-- Logo -->
-                <a href="#" class="logo">Car<span>Point</span></a>
-                <!-- nav liste -->
+            <!-- nav liste -->
+            <ul class="navbar">
                 <ul class="navbar">
-                    <li><a href="index.php" class="active">Accueil</a></li>
-                    <li><a href="gestions.php">gestions</a></li>
-                    <li><a href="gestionServices.php">gestions services</a></li>
-                    <li><a href="add_employe.php">Employé</a></li>
-                    <li><a href="../index.php">Déconnexion</a></li>
+                    <?php foreach ($adminMenu as $page => $titre) { ?>
+                        <li>
+                            <a href="<?= $page; ?>" <?php if (basename($_SERVER['SCRIPT_NAME']) === $page) {
+                                                        echo 'active';
+                                                    } ?>>
+                                <?= $titre; ?>
+                            </a>
+                        </li>
+                    <?php } ?>
                 </ul>
+
+                <div>
+                    <a href="#" class="">
+                        <strong><?= $_SESSION["user"]["first_name"]; ?></strong>
+                    </a>
+                </div>
+
                 <!-- search icon -->
                 <i class='bx bx-search' id="search-icon"></i>
                 <!-- search box -->
                 <div class="search-box container">
                     <input type="search" name="" id="" placeholder="search here ...">
                 </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home section-->
+        <section class="home" id="home">
+            <div class="home-text">
+                <h1>Formulaire D'ajouter<br>Du <span>Contenu</span> Garage V.Parrot</h1>
             </div>
-        </header>
+        </section>
 
-        <main>
-            <!-- Home section-->
-            <section class="home" id="home">
-                <div class="home-text">
-                    <h1>Formulaire D'ajouter<br>Du <span>Contenu au </span>Site</h1>
+
+        <div class="container-form">
+
+            <?php foreach ($messages as $message) { ?>
+                <div class="message" style="color:green" role="alert">
+                    <?= $message; ?>
                 </div>
-            </section>
+            <?php } ?>
+            <?php foreach ($errors as $error) { ?>
+                <div class="error" style="color: red;" role="alert">
+                    <?= $error; ?>
+                </div>
+            <?php } ?>
+            <?php if ($car !== false) { ?>
 
-            <div class="container-form">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="input-group">
                         <label for="title">Marque</label>
@@ -243,38 +248,11 @@ if (isset($_POST['saveCar'])) {
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <label for="color">Couleur</label>
-                        <div class="icon-input-container">
-                            <input type="text" autocomplete="off" id="color" name="color" placeholder="Couleur" value="<?= $car['color']; ?>">
-                        </div>
-                    </div>
 
                     <div class="input-group">
-                        <label for="place">Nombre de place(s)</label>
+                        <label for="carburant">Énergie</label>
                         <div class="icon-input-container">
-                            <input type="text" autocomplete="off" id="place" name="place" placeholder="Nombre de place" value="<?= $car['place']; ?>">
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="porte">Nombre de porte(s)</label>
-                        <div class="icon-input-container">
-                            <input type="text" autocomplete="off" id="porte" name="porte" placeholder="Nombre de porte" value="<?= $car['porte']; ?>">
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="puissance">Puissance</label>
-                        <div class="icon-input-container">
-                            <input type="text" autocomplete="off" id="puissance" name="puissance" placeholder="Puissance" value="<?= $car['puissance']; ?>">
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="carburant">Carburant</label>
-                        <div class="icon-input-container">
-                            <input type="text" autocomplete="off" id="carburant" name="carburant" placeholder="Carburant" value="<?= $car['carburant']; ?>">
+                            <input type="text" autocomplete="off" id="carburant" name="carburant" placeholder="Énergie" value="<?= $car['carburant']; ?>">
                         </div>
                     </div>
 
@@ -297,8 +275,7 @@ if (isset($_POST['saveCar'])) {
                         <!--  class="form-select" -->
                         <select name="category_id" id="category">
                             <?php foreach ($categories as $category) { ?>
-                                <option value="1" <?php if (isset($car['category_id']) && $car['category_id'] == $category['id'])
-                                                    { ?>selected="selected" <?php }; ?>><?= $category['name'] ?>
+                                <option value="1" <?php if (isset($car['category_id']) && $car['category_id'] == $category['id']) { ?>selected="selected" <?php }; ?>><?= $category['name'] ?>
                                 </option>
                             <?php } ?>
                         </select>
@@ -318,51 +295,54 @@ if (isset($_POST['saveCar'])) {
                     <!-- <input type="submit" name="saveCar" class="btn btn-primary" value="Enregistrer"> -->
                     <button type="submit" name="saveCar">Enrégistré</button>
                 </form>
-            </div>
-        <?php } ?>
-        </main>
-
-        <footer>
-            <section class="footer">
-                <div class="footer-container container">
-                    <div class="footer-box">
-                        <a href="#" class="logo">Car<span>Point</span></a>
-                        <div class="social">
-                            <a href="#"><i class='bx bxl-facebook'></i></a>
-                            <a href="#"><i class='bx bxl-twitter'></i></a>
-                            <a href="#"><i class='bx bxl-instagram'></i></a>
-                            <a href="#"><i class='bx bxl-youtube'></i></a>
-                        </div>
-
-                        <div class="footer-box">
-                            <h3>Page</h3>
-                            <a href="#">Home</a>
-                            <a href="#">Cars</a>
-                            <a href="#">Parts</a>
-                            <a href="#">Sales</a>
-                        </div>
-
-                        <div class="footer-box">
-                            <h3>Legal</h3>
-                            <a href="#">Privacy</a>
-                            <a href="#">Refund Policy</a>
-                            <a href="#">Cookie Policy</a>
-                        </div>
-
-                        <div class="footer-box">
-                            <h3>Contact</h3>
-                            <p>United states</p>
-                            <p>Japan</p>
-                            <p>Germany</p>
-                        </div>
-
-                    </div>
-            </section>
-        </footer>
-        <!-- copyright -->
-        <div class="copyright">
-            <p>&#169; CarpoolVenom All Right Reserved</p>
         </div>
-    </body>
+    <?php } ?>
+    </main>
 
-    </html>
+    <footer>
+        <section class="footer">
+            <div class="footer-container container">
+                <div class="footer-box">
+                    <a href="#" class="logo">Garage V.<span>Parrot</span></a>
+                    <div class="social">
+                        <a href="#"><i class='bx bxl-facebook'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-youtube'></i></a>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <h3>Page</h3>
+                    <li><a href="index.php" class="active">Accueil</a></li>
+                    <li><a href="gestions.php">gestions</a></li>
+                    <li><a href="gestionServices.php">gestions services</a></li>
+                    <li><a href="service.php">Service</a></li>
+                    <li><a href="inscription.php">Inscription</a></li>
+                </div>
+                <div class="footer-box">
+                    <h3>Informations utiles</h3>
+                    <a href="#"><i class='bx bx-envelope'></i> garage.vparrot@gmail.com</a>
+                    <a href="#"> <i class='bx bxs-phone'></i> 0561718191</a>
+                    <a href="#"> <i class='bx bxs-map'></i> 1 Rue Perigord</a>
+                </div>
+                <div class="footer-box">
+                    <h3>Horaires d'ouvertures</h3>
+                    <p>Lundi : 8h45-12h00 14h00-18h00</p>
+                    <p>Mardi : 8h45-12h00 14h00-18h00</p>
+                    <p>Mercredi : 8h45-12h00 14h00-18h00</p>
+                    <p>Jeudi : 8h45-12h00 14h00-18h00</p>
+                    <p>Vendredi : 8h45-12h00 14h00-18h00</p>
+                    <p>Samedi : 8h45-12h00 Fermer</p>
+                    <p>Dimanche : Fermer</p>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <!-- copyright -->
+    <div class="copyright">
+        <p>&#169;2023</p>
+    </div>
+    <script src="frontAdmin/js/index.js"></script>
+</body>
+
+</html>
