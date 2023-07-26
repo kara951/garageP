@@ -1,4 +1,4 @@
 # Garage
-Garage automobile
+Garage automobile.
 
 ajout de compte admin
